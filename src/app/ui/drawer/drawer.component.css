@@ -1,0 +1,51 @@
+/* Modern Drawer Styling */
+::ng-deep .modern-drawer {
+  .p-drawer {
+    border-radius: 0 20px 20px 0;
+    overflow: hidden;
+    box-shadow:
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .p-drawer-content {
+    padding: 0;
+    background: transparent;
+  }
+
+  .p-drawer-header {
+    display: none;
+  }
+}
+
+/* Scrollbar Styling */
+::ng-deep .modern-drawer .p-drawer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+::ng-deep .modern-drawer .p-drawer-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+::ng-deep .modern-drawer .p-drawer-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+::ng-deep .modern-drawer .p-drawer-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Additional hover effects for better interactivity */
+.group:hover .w-2 {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+/* Enhanced backdrop blur effect */
+::ng-deep .modern-drawer .p-drawer-mask {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.2);
+}

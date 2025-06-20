@@ -1,0 +1,26 @@
+<div class="px-4 py-6">
+  <p-carousel
+    [value]="images"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="4000"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false"
+    [showNavigators]="false"
+    class="apple-carousel"
+    >
+    <ng-template let-image #item>
+      <div class="carousel-item-wrapper">
+        <div class="carousel-card">
+          <img
+            [src]="image"
+            [alt]="'PC Component'"
+            class="carousel-image"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
