@@ -1,0 +1,284 @@
+<section
+  class="relative bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-100 py-10 overflow-hidden"
+>
+  <div
+    class="absolute inset-0 opacity-40"
+    style="
+      background-image: url('data:image/svg+xml;utf8,<svg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;><g fill=&quot;%23000000&quot; fill-opacity=&quot;0.03&quot;><circle cx=&quot;7&quot; cy=&quot;7&quot; r=&quot;1&quot;/></g></g></svg>');
+    "
+  ></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1
+        class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
+      >
+        {{ heroData.title }}
+        <span class="block text-4xl md:text-5xl text-blue-600 font-light mt-2">
+          {{ heroData.subtitle }}
+        </span>
+      </h1>
+
+      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+        {{ heroData.description }}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button
+          class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+        >
+          {{ heroData.primaryButton }}
+        </button>
+        <button
+          class="bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-gray-200 hover:border-blue-300"
+        >
+          {{ heroData.secondaryButton }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl fond-bold text-gray-600 max-w-4xl mx-auto">
+        Explore our extensive collection of premium PC components and gaming
+        setups
+      </h2>
+    </div>
+    <app-carousel />
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Discover our top-selling components with unbeatable performance and
+        value
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div
+        *ngFor="let product of featuredProducts"
+        class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+      >
+        <div class="relative overflow-hidden">
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div
+            *ngIf="product.discount"
+            class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+          >
+            -{{ product.discount }}%
+          </div>
+          <div
+            *ngIf="!product.inStock"
+            class="absolute top-4 right-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
+          >
+            Out of Stock
+          </div>
+        </div>
+
+        <div class="p-6">
+          <div class="text-sm text-blue-600 font-medium mb-2">
+            {{ product.category }}
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3 line-clamp-2">
+            {{ product.name }}
+          </h3>
+
+          <div class="flex items-center mb-3">
+            <div class="flex text-yellow-400 text-sm mr-2">
+              <i
+                class="pi pi-star-fill"
+                *ngFor="let star of [1, 2, 3, 4, 5]"
+              ></i>
+            </div>
+            <span class="text-sm text-gray-600"
+              >{{ product.rating }} ({{ product.reviews }})</span
+            >
+          </div>
+
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="text-2xl font-bold text-gray-900"
+                >\${{ product.price }}</span
+              >
+              <span
+                *ngIf="
+                  product.originalPrice && product.originalPrice > product.price
+                "
+                class="text-lg text-gray-500 line-through"
+                >\${{ product.originalPrice }}</span
+              >
+            </div>
+          </div>
+
+          <button
+            (click)="addToCart(product)"
+            [disabled]="!product.inStock"
+            class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
+          >
+            {{ product.inStock ? "Add to Cart" : "Out of Stock" }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Pre-Built Systems</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Ready-to-use PCs optimized for your specific needs
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div
+        *ngFor="let system of preBuiltSystems"
+        class="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+      >
+        <div class="relative overflow-hidden">
+          <img
+            [src]="system.image"
+            [alt]="system.name"
+            class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div
+            *ngIf="system.popular"
+            class="absolute top-4 left-4 bg-gradient-to-r from-green-400 to-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg"
+          >
+            ⭐ Most Popular
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm"
+          >
+            {{ system.performance }}
+          </div>
+        </div>
+
+        <div class="p-8">
+          <div class="text-sm text-blue-600 font-medium mb-2">
+            {{ system.category }}
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            {{ system.name }}
+          </h3>
+
+          <div class="space-y-2 mb-6">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">CPU:</span>
+              <span class="font-medium">{{ system.specs.cpu }}</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">GPU:</span>
+              <span class="font-medium">{{ system.specs.gpu }}</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">RAM:</span>
+              <span class="font-medium">{{ system.specs.ram }}</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Storage:</span>
+              <span class="font-medium">{{ system.specs.storage }}</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-2">
+              <span class="text-3xl font-bold text-gray-900"
+                >\${{ system.price }}</span
+              >
+              <span
+                *ngIf="
+                  system.originalPrice && system.originalPrice > system.price
+                "
+                class="text-lg text-gray-500 line-through"
+                >\${{ system.originalPrice }}</span
+              >
+            </div>
+          </div>
+
+          <button
+            (click)="configureSystem(system)"
+            class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          >
+            Configure & Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-32 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-24">
+      <h2
+        class="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight"
+      >
+        Why TechStore
+      </h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+        Built for performance. Designed for you.
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 max-w-5xl mx-auto"
+    >
+      <div
+        *ngFor="let feature of features; let i = index"
+        class="text-center group"
+        [class.lg:col-span-1]="i < 6"
+        [class.col-span-2]="i >= 6"
+      >
+        <div
+          class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-200 group-hover:scale-110"
+        >
+          <i [class]="feature.icon" class="text-lg text-white"></i>
+        </div>
+
+        <h3 class="text-lg font-medium text-gray-900 mb-2">
+          {{ feature.title }}
+        </h3>
+
+        <p class="text-sm text-gray-500">
+          {{ feature.description }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+  <div class="container mx-auto px-6 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold mb-4">{{ newsletter.title }}</h2>
+      <p class="text-xl text-gray-300 mb-10">{{ newsletter.description }}</p>
+
+      <div class="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
+        <input
+          type="email"
+          [placeholder]="newsletter.placeholder"
+          class="flex-1 px-6 py-4 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-500/50 text-lg"
+        />
+        <button
+          class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl whitespace-nowrap"
+        >
+          {{ newsletter.buttonText }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
