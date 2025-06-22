@@ -25,7 +25,7 @@
 
     <app-drawer />
 
-    <div class="flex space-x-4">
+    <div class="flex justify-center items-center space-x-4">
       <button
         class="flex items-center space-x-2 bg-neutral-800/90 backdrop-blur-sm text-white px-5 py-2.5 rounded-full font-light text-sm hover:bg-blue-700/95 transition-all duration-300 shadow-sm hover:cursor-pointer"
       >
@@ -38,6 +38,8 @@
         <i class="pi pi-hammer text-xs"></i>
         <span>PC Builder</span>
       </button>
+
+      <app-cart/>
 
       <div
         class="relative"
@@ -57,13 +59,9 @@
 
         @if(showUserDropdown) {
         <div class="absolute right-0 top-full w-56 h-10 bg-transparent"></div>
-        }
-
-        @if (showUserDropdown) {
+        } @if (showUserDropdown) { @if(isAuthenticated) {
         <div
           class="absolute right-0 top-full mt-3 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-200/50 py-2 z-50 transition-all duration-200 transform origin-top-right"
-          [class.scale-100]="showUserDropdown"
-          [class.opacity-100]="showUserDropdown"
         >
           <div class="px-4 py-3 border-b border-gray-100">
             <p class="text-sm font-medium text-gray-900">John Doe</p>
@@ -106,7 +104,28 @@
             Sign Out
           </button>
         </div>
-        }
+        } @else {
+        <div
+          class="absolute right-0 top-full mt-3 w-56 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-gray-200/50 py-2 z-50 transition-all duration-200 transform origin-top-right"
+        >
+          <div class="py-1">
+            <button
+              (click)="login()"
+              class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+            >
+              <i class="pi pi-sign-in mr-3 text-xs"></i>
+              Login
+            </button>
+            <button
+              (click)="register()"
+              class="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-150"
+            >
+              <i class="pi pi-user-plus mr-3 text-xs"></i>
+              Register
+            </button>
+          </div>
+        </div>
+        } }
       </div>
     </div>
   </nav>

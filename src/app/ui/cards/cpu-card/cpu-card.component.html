@@ -1,0 +1,110 @@
+<div
+  class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200 group"
+>
+  <div
+    class="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100"
+  >
+    <img
+      [src]="cpu().image"
+      [alt]="cpu().name"
+      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+    />
+    <div class="absolute top-3 left-3">
+      <span
+        class="inline-block backdrop-blur-sm text-white text-xs px-3 py-1 rounded-full font-medium"
+        [ngClass]="{
+          'bg-blue-600/90': cpu().brand === 'Intel',
+          'bg-red-600/90': cpu().brand === 'AMD'
+        }"
+      >
+        {{ cpu().brand }}
+      </span>
+    </div>
+    @if (hasDiscount()) {
+    <div class="absolute bottom-3 left-3">
+      <span
+        class="inline-block bg-orange-500/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full font-medium"
+      >
+        -{{ cpu().discount }}% OFF
+      </span>
+    </div>
+    }
+  </div>
+
+  <div class="p-6">
+    <h3
+      class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+    >
+      {{ cpu().name }}
+    </h3>
+
+    <div class="flex cpus-center mb-3">
+      <div class="flex cpus-center bg-gray-100 px-2 py-1 rounded-full">
+        <span class="text-sm font-medium text-gray-900">{{ cpu().rating }}</span>
+        <i class="pi pi-star-fill text-yellow-500 ml-1 text-xs"></i>
+      </div>
+      <span class="ml-2 text-sm text-gray-500">({{ cpu().reviews }})</span>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">Cores/Threads</span>
+        <span class="font-semibold text-gray-900"
+          >{{ cpu().cores }}/{{ cpu().threads }}</span
+        >
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">Base Clock</span>
+        <span class="font-semibold text-gray-900">{{ cpu().baseClock }}GHz</span>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">Boost Clock</span>
+        <span class="font-semibold text-gray-900">{{ cpu().boostClock }}GHz</span>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">Socket</span>
+        <span class="font-semibold text-gray-900">{{ cpu().socket }}</span>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">Cache</span>
+        <span class="font-semibold text-gray-900">{{ cpu().cache }}</span>
+      </div>
+
+      <div class="bg-gray-50 rounded-lg p-3">
+        <span class="text-gray-500 block text-xs">TDP</span>
+        <span class="font-semibold text-gray-900">{{ cpu().tdp }}W</span>
+      </div>
+    </div>
+
+    <div class="flex gap-2 mb-4">
+      <span
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded-full"
+      >
+        {{ cpu().generation }}
+      </span>
+      <span
+        class="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded-full"
+      >
+        {{ cpu().architecture }}
+      </span>
+    </div>
+
+
+    <div class="mb-4">
+      @if (cpu().originalPrice && cpu().discount) {
+      <div class="flex cpus-center gap-2">
+        <span class="text-sm text-gray-500 line-through"
+          >${{ cpu().originalPrice }}</span
+        >
+        <span class="text-xl font-bold text-green-600">{{ formattedPrice() }}</span>
+      </div>
+      } @else {
+      <span class="text-xl font-bold text-gray-900">{{ formattedPrice() }}</span>
+      }
+    </div>
+  </div>
+</div>

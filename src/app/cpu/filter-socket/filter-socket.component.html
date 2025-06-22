@@ -1,0 +1,38 @@
+<div
+  class="bg-white/70 backdrop-blur-2xl border border-white/20 shadow-sm"
+>
+  <div class="p-6">
+    <h3 class="text-lg font-medium text-gray-900 mb-6 tracking-wide">Socket</h3>
+
+    <div class="space-y-2 mb-6">
+      @for (option of socketOptions(); track option.value) {
+      <label
+        class="flex items-center cursor-pointer group"
+        [class.text-blue-600]="selectedSocket() === option.value"
+        [class.text-gray-600]="selectedSocket() !== option.value"
+      >
+        <input
+          type="radio"
+          name="socket"
+          [value]="option.value"
+          [checked]="selectedSocket() === option.value"
+          (change)="onSocketChange(option.value)"
+          class="sr-only"
+        />
+        <div
+          class="w-4 h-4 rounded-full border transition-all duration-200 mr-3 flex items-center justify-center"
+          [class.border-blue-500]="selectedSocket() === option.value"
+          [class.border-gray-300]="selectedSocket() !== option.value"
+        >
+          @if (selectedSocket() === option.value) {
+          <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+          }
+        </div>
+        <span class="text-sm font-normal tracking-wide">{{
+          option.label
+        }}</span>
+      </label>
+      }
+    </div>
+  </div>
+</div>

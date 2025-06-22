@@ -1,174 +1,226 @@
-<p-drawer [(visible)]="visible" [style]="{ width: '400px' }" [modal]="true" class="modern-drawer">
+<p-drawer
+  [(visible)]="visible"
+  [style]="{ width: '400px' }"
+  [modal]="true"
+  class="modern-drawer"
+>
   <ng-template #headless>
-    <div class="bg-gradient-to-br from-gray-50 to-gray-100/80 min-h-full overflow-auto backdrop-blur-xl">
-      <div class="bg-white/95 backdrop-blur-md mx-4 mt-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10">
+    <div
+      class="bg-gradient-to-br from-gray-50 to-gray-100/80 min-h-full overflow-auto backdrop-blur-xl"
+    >
+      <div
+        class="bg-white/95 backdrop-blur-md mx-4 mt-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10"
+      >
         <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-5">
           <h3 class="text-lg font-semibold text-white flex items-center">
-            <div class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3">
+            <div
+              class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3"
+            >
               <i class="pi pi-cog text-sm text-white"></i>
             </div>
             Computer Components
           </h3>
         </div>
         <div class="p-6 space-y-5">
-          <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+          <div class="group ">
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base cursor-pointer"
+              (click)="navigateTo('cpu')"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm "
+              ></div>
               CPUs / Processors
             </h4>
-            <div class="ml-6 space-y-2">
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Intel Processors
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                AMD Processors
-              </a>
-            </div>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Motherboards
             </h4>
-            <div class="ml-6 space-y-2">
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Intel Motherboards
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                AMD Motherboards
-              </a>
-            </div>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Graphics Cards
             </h4>
-            <div class="ml-6 space-y-2">
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                NVIDIA GeForce RTX
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                AMD Radeon
-              </a>
-            </div>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Memory (RAM)
             </h4>
-            <div class="ml-6 space-y-2">
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Desktop Memory
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Laptop Memory
-              </a>
-            </div>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Storage
             </h4>
-            <div class="ml-6 space-y-2">
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Solid State Drives (SSD)
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                Hard Drives (HDD)
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                External Storage
-              </a>
-              <a href="#" class="block text-gray-600 hover:text-blue-600 hover:bg-blue-50/80 px-4 py-2.5 rounded-xl transition-all duration-300 text-sm font-medium hover:translate-x-1">
-                NAS / Network Storage
-              </a>
-            </div>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base cursor-pointer hover:text-blue-600 transition-colors duration-300">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base cursor-pointer hover:text-blue-600 transition-colors duration-300"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Power Supplies
             </h4>
           </div>
 
           <div class="group">
-            <h4 class="font-semibold text-gray-900 mb-3 flex items-center text-base cursor-pointer hover:text-blue-600 transition-colors duration-300">
-              <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"></div>
+            <h4
+              class="font-semibold text-gray-900 mb-3 flex items-center text-base cursor-pointer hover:text-blue-600 transition-colors duration-300"
+            >
+              <div
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mr-4 shadow-sm"
+              ></div>
               Cases
             </h4>
           </div>
         </div>
       </div>
 
-      <div class="bg-white/95 backdrop-blur-md mx-4 mt-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10">
+      <div
+        class="bg-white/95 backdrop-blur-md mx-4 mt-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10"
+      >
         <div class="bg-gradient-to-r from-gray-700 to-gray-800 px-6 py-5">
           <h3 class="text-lg font-semibold text-white flex items-center">
-            <div class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3">
+            <div
+              class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3"
+            >
               <i class="pi pi-external-link text-sm text-white"></i>
             </div>
             Peripherals & Accessories
           </h3>
         </div>
         <div class="p-6 grid grid-cols-2 gap-3">
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Monitors</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Keyboards</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Mice</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Audio</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Webcams</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Printers</span>
           </a>
         </div>
       </div>
 
-      <div class="bg-white/95 backdrop-blur-md mx-4 my-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10">
+      <div
+        class="bg-white/95 backdrop-blur-md mx-4 my-6 rounded-3xl border border-white/40 overflow-hidden shadow-xl shadow-gray-900/10"
+      >
         <div class="bg-gradient-to-r from-gray-600 to-gray-700 px-6 py-5">
           <h3 class="text-lg font-semibold text-white flex items-center">
-            <div class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3">
+            <div
+              class="w-6 h-6 bg-white/20 rounded-lg flex items-center justify-center mr-3"
+            >
               <i class="pi pi-wifi text-sm text-white"></i>
             </div>
             Networking
           </h3>
         </div>
         <div class="p-6 grid grid-cols-2 gap-3">
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Routers</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Switches</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Adapters</span>
           </a>
-          <a href="#" class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105">
-            <div class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"></div>
+          <a
+            href="#"
+            class="flex items-center p-3 rounded-2xl text-gray-700 hover:text-gray-900 hover:bg-gray-50/80 transition-all duration-300 hover:scale-105"
+          >
+            <div
+              class="w-2 h-2 bg-gradient-to-r from-gray-400 to-gray-500 rounded-full mr-3"
+            ></div>
             <span class="text-sm font-medium">Cables</span>
           </a>
         </div>

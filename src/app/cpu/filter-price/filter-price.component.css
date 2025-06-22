@@ -1,0 +1,27 @@
+:host ::ng-deep .minimal-slider .p-slider-horizontal {
+  height: 2px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  border: none;
+}
+
+:host ::ng-deep .minimal-slider .p-slider-range {
+  background: #3b82f6;
+  border-radius: 2px;
+}
+
+:host ::ng-deep .minimal-slider .p-slider-handle {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+:host ::ng-deep .minimal-slider .p-slider-handle:hover,
+:host ::ng-deep .minimal-slider .p-slider-handle:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 6px rgba(59,130,246,0.2);
+}
