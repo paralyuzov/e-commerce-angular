@@ -1,29 +1,41 @@
 <section
+
   class="relative bg-gradient-to-br from-gray-50 via-blue-50/30 to-gray-100 py-10 overflow-hidden"
 >
   <div
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-r-4 animate-duration-800 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-l-2 animate-duration-400"
     class="absolute inset-0 opacity-40"
-    style="
-      background-image: url('data:image/svg+xml;utf8,<svg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;><g fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;><g fill=&quot;%23000000&quot; fill-opacity=&quot;0.03&quot;><circle cx=&quot;7&quot; cy=&quot;7&quot; r=&quot;1&quot;/></g></g></svg>');
-    "
   ></div>
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
       <h1
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-100"
         class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight"
       >
         {{ heroData.title }}
-        <span class="block text-4xl md:text-5xl text-blue-600 font-light mt-2">
+        <span
+          pAnimateOnScroll
+          enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-200"
+          class="block text-4xl md:text-5xl text-blue-600 font-light mt-2">
           {{ heroData.subtitle }}
         </span>
       </h1>
 
-      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+      <p
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-300"
+        class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
         {{ heroData.description }}
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-400"
+        class="flex flex-col sm:flex-row gap-4 justify-center">
         <button
           class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
         >
@@ -39,21 +51,41 @@
   </div>
 </section>
 
-<section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-8">
-      <h2 class="text-4xl fond-bold text-gray-600 max-w-4xl mx-auto">
+<section
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-l-4 animate-duration-700 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-r-2 animate-duration-400"
+  class="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30 relative overflow-hidden">
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-200"
+      class="text-center mb-8">
+      <h2 class="text-4xl font-bold text-gray-600 max-w-4xl mx-auto">
         Explore our extensive collection of premium PC components and gaming
         setups
       </h2>
     </div>
-    <app-carousel />
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-3 animate-duration-600 animate-delay-300"
+    >
+      <app-carousel />
+    </div>
   </div>
 </section>
 
-<section class="py-20 bg-white">
+<section
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-b-4 animate-duration-700 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-t-2 animate-duration-400"
+  class="py-20 bg-white">
   <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600"
+      class="text-center mb-16">
       <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Products</h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
         Discover our top-selling components with unbeatable performance and
@@ -61,10 +93,16 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-3 animate-duration-700 animate-delay-200"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <div
-        *ngFor="let product of featuredProducts"
-        class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-500 animate-ease-out"
+        [style.animation-delay]="(i * 100) + 'ms'"
+        *ngFor="let product of featuredProducts; let i = index"
+        class="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
       >
         <div class="relative overflow-hidden">
           <img
@@ -134,19 +172,33 @@
   </div>
 </section>
 
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
+<section
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-r-4 animate-duration-700 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-l-2 animate-duration-400"
+  class="py-20 bg-white relative overflow-hidden">
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600"
+      class="text-center mb-16">
       <h2 class="text-4xl font-bold text-gray-900 mb-4">Pre-Built Systems</h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto">
         Ready-to-use PCs optimized for your specific needs
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-3 animate-duration-700 animate-delay-200"
+      class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div
-        *ngFor="let system of preBuiltSystems"
-        class="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-ease-out"
+        [style.animation-delay]="(i * 150) + 'ms'"
+        *ngFor="let system of preBuiltSystems; let i = index"
+        class="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
       >
         <div class="relative overflow-hidden">
           <img
@@ -221,9 +273,16 @@
   </div>
 </section>
 
-<section class="py-32 bg-gray-50">
+<section
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-b-4 animate-duration-700 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-t-2 animate-duration-400"
+  class="py-32 bg-gray-50">
   <div class="container mx-auto px-6">
-    <div class="text-center mb-24">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600"
+      class="text-center mb-24">
       <h2
         class="text-4xl md:text-5xl font-light text-gray-900 mb-6 tracking-tight"
       >
@@ -235,16 +294,21 @@
     </div>
 
     <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-3 animate-duration-700 animate-delay-200"
       class="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16 max-w-5xl mx-auto"
     >
       <div
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-500 animate-ease-out"
+        [style.animation-delay]="(i * 80) + 'ms'"
         *ngFor="let feature of features; let i = index"
-        class="text-center group"
+        class="text-center group transform transition-all duration-300 hover:scale-105"
         [class.lg:col-span-1]="i < 6"
         [class.col-span-2]="i >= 6"
       >
         <div
-          class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4 transition-transform duration-200 group-hover:scale-110"
+          class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:scale-110 shadow-lg group-hover:shadow-xl"
         >
           <i [class]="feature.icon" class="text-lg text-white"></i>
         </div>
@@ -261,13 +325,24 @@
   </div>
 </section>
 
-<section class="py-20 bg-gradient-to-r from-gray-900 to-gray-800 text-white">
-  <div class="container mx-auto px-6 text-center">
-    <div class="max-w-3xl mx-auto">
+<section
+  pAnimateOnScroll
+  enterClass="animate-enter fade-in-100 slide-in-from-b-4 animate-duration-700 animate-ease-out"
+  leaveClass="animate-leave fade-out-20 slide-out-to-t-2 animate-duration-400"
+  class="py-20 bg-gradient-to-r from-gray-900 via-blue-900 to-gray-800 text-white relative overflow-hidden">
+
+  <div class="container mx-auto px-6 text-center relative z-10">
+    <div
+      pAnimateOnScroll
+      enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-100"
+      class="max-w-3xl mx-auto">
       <h2 class="text-4xl font-bold mb-4">{{ newsletter.title }}</h2>
       <p class="text-xl text-gray-300 mb-10">{{ newsletter.description }}</p>
 
-      <div class="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
+      <div
+        pAnimateOnScroll
+        enterClass="animate-enter fade-in-100 slide-in-from-b-2 animate-duration-600 animate-delay-200"
+        class="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
         <input
           type="email"
           [placeholder]="newsletter.placeholder"

@@ -17,6 +17,8 @@ import {
   CoreFilter,
   FilterCoresComponent,
 } from './filter-cores/filter-cores.component';
+import { BreadcrumbComponent } from '../ui/breadcrumb/breadcrumb.component';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-cpu',
@@ -26,6 +28,7 @@ import {
     FilterBrandComponent,
     FilterSocketComponent,
     FilterCoresComponent,
+    BreadcrumbComponent,
   ],
   templateUrl: './cpu.component.html',
   styleUrl: './cpu.component.css',
@@ -37,6 +40,10 @@ export class CpuComponent {
   brandFilter = signal<BrandFilter>({ selectedBrand: 'All' });
   socketFilter = signal<SocketFilter>({ selectedSocket: 'All' });
   coreFilter = signal<CoreFilter>({ selectedCores: 'All' });
+  breadcrumbs = signal<MenuItem[]>([
+    { label: 'Components' },
+    { label: 'CPUs' }
+  ]);
 
   filteredProducts = computed(() => {
     const products = this.cpuProducts();
@@ -347,16 +354,38 @@ export class CpuComponent {
     ]);
   }
 
+  updateBreadcrumbs() {
+    const brandF = this.brandFilter();
+    const socketF = this.socketFilter();
+
+    const items: MenuItem[] = [
+      { label: 'Components' },
+      { label: 'CPUs' }
+    ];
+
+    if (brandF.selectedBrand !== 'All') {
+      items.push({ label: brandF.selectedBrand });
+    }
+
+    if (socketF.selectedSocket !== 'All') {
+      items.push({ label: socketF.selectedSocket });
+    }
+
+    this.breadcrumbs.set(items);
+  }
+
   onPriceFilterChange(filter: PriceFilter) {
     this.priceFilter.set(filter);
   }
 
   onBrandFilterChange(filter: BrandFilter) {
     this.brandFilter.set(filter);
+    this.updateBreadcrumbs();
   }
 
   onSocketFilterChange(filter: SocketFilter) {
     this.socketFilter.set(filter);
+    this.updateBreadcrumbs();
   }
 
   onCoresFilterChange(filter: CoreFilter) {
