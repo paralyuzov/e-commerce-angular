@@ -49,14 +49,15 @@ export class CpuComponent implements OnInit {
     { label: 'CPUs' }
   ]);
 
+  private _breadcrumbsEffect = effect(() => {
+    const currentFilters = this.filters();
+    if (currentFilters) {
+      this.updateBreadcrumbs(currentFilters);
+    }
+  });
+
   ngOnInit() {
     this.store.dispatch(CpuActions.loadCpus());
-    effect(() => {
-      const currentFilters = this.filters();
-      if (currentFilters) {
-        this.updateBreadcrumbs(currentFilters);
-      }
-    });
   }
 
   onPriceFilterChange(filter: PriceFilter) {
