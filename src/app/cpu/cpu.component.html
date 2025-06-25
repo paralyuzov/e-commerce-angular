@@ -1,27 +1,66 @@
 <div class="min-h-screen bg-gray-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="flex gap-8">
-      <div class="w-60 space-y-6">
-        <app-filter-price
-          [allCpus]="cpuProducts()"
-          (priceFilterChange)="onPriceFilterChange($event)" />
-
-        <app-filter-brand
-          [allCpus]="cpuProducts()"
-          (brandFilterChange)="onBrandFilterChange($event)" />
-
-        <app-filter-socket
-          [allCpus]="cpuProducts()"
-          (socketFilterChange)="onSocketFilterChange($event)" />
-        <app-filter-cores
-          [allCpus]="cpuProducts()"
-          (coreFilterChange)="onCoresFilterChange($event)" />
+    @if (loading()) {
+      <div class="flex justify-center items-center h-64">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <span class="ml-3 text-lg">Loading CPUs...</span>
       </div>
-
-      <div class="flex-1">
-        <app-breadcrumb [items]="breadcrumbs()"/>
-        <app-dataview [products]="filteredProducts()" />
+    }
+    @if (error(); as error) {
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div class="flex items-center justify-between">
+          <span>{{ error }}</span>
+          <button (click)="onClearError()" class="text-red-700 hover:text-red-900">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
       </div>
-    </div>
+    }
+    @if (!loading()) {
+      <div class="flex gap-8">
+        <div class="w-60 space-y-6">
+          @if (allProducts(); as allCpus) {
+            @if (allCpus.length > 0) {
+              @if (filters(); as currentFilters) {
+                <app-filter-price
+                  [currentPriceRange]="currentFilters.priceRange"
+                  [availablePriceRange]="availablePriceRange()"
+                  (priceFilterChange)="onPriceFilterChange($event)" />
+
+                <app-filter-brand
+                  [availableBrands]="availableBrands()"
+                  [selectedBrand]="currentFilters.brand"
+                  (brandFilterChange)="onBrandFilterChange($event)" />
+
+                <app-filter-socket
+                  [availableSockets]="availableSockets()"
+                  [selectedSocket]="currentFilters.socket"
+                  (socketFilterChange)="onSocketFilterChange($event)" />
+
+                <app-filter-cores
+                  [availableCores]="availableCores()"
+                  [selectedCores]="currentFilters.cores"
+                  (coreFilterChange)="onCoresFilterChange($event)" />
+
+                <button
+                  (click)="onResetFilters()"
+                  class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded transition-colors">
+                  Reset All Filters
+                </button>
+              }
+            }
+          }
+        </div>
+
+        <div class="flex-1">
+          <app-breadcrumb [items]="breadcrumbs()"/>
+          @if (filteredProducts(); as products) {
+            <app-dataview [products]="products" />
+          }
+        </div>
+      </div>
+    }
   </div>
 </div>
