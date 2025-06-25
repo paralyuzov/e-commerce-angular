@@ -1,5 +1,6 @@
 export interface CPU {
-  id: string;
+  _id: string;
+  id?: string; 
   name: string;
   brand: string;
   type: 'cpu';
@@ -23,4 +24,24 @@ export interface CPU {
   integratedGraphics?: string;
   inStock: boolean;
   features: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
+}
+
+export interface PriceFilter {
+  min: number;
+  max: number;
+}
+
+export interface BrandFilter {
+  selectedBrand: string;
+}
+
+export interface SocketFilter {
+  selectedSocket: string;
+}
+
+export interface CoreFilter {
+  selectedCores: string | number;
 }
