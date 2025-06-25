@@ -5,7 +5,7 @@
     </h3>
 
     <div class="space-y-2 mb-6">
-      @for (option of brandOptions; track option.value) {
+      @for (option of brandOptions(); track option.value) {
         <label class="flex items-center cursor-pointer group"
                [class.text-blue-600]="selectedBrand() === option.value"
                [class.text-gray-600]="selectedBrand() !== option.value">

@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CPU } from '../../interfaces/cpu.interface';
 
@@ -13,20 +13,16 @@ export interface BrandFilter {
   styleUrl: './filter-brand.component.css'
 })
 export class FilterBrandComponent {
-  allCpus = input.required<CPU[]>();
-
-  selectedBrand = signal<string>('All');
+  availableBrands = input<string[]>(['All']);
+  selectedBrand = input<string>('All');
   brandFilterChange = output<BrandFilter>();
 
-  brandOptions = [
-    { label: 'All', value: 'All' },
-    { label: 'Intel', value: 'Intel' },
-    { label: 'AMD', value: 'AMD' }
-  ];
+  brandOptions = computed(() => {
+    const brands = this.availableBrands();
+    return brands.map(brand => ({ label: brand, value: brand }));
+  });
 
   onBrandChange(selectedBrand: string) {
-    console.log('Brand changed to:', selectedBrand);
-    this.selectedBrand.set(selectedBrand);
     this.brandFilterChange.emit({ selectedBrand });
   }
 
