@@ -1,4 +1,4 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { CPU } from '../../interfaces/cpu.interface';
 
 export interface CoreFilter {
@@ -11,21 +11,19 @@ export interface CoreFilter {
   styleUrl: './filter-cores.component.css'
 })
 export class FilterCoresComponent {
-  allCpus = input.required<CPU[]>();
-  selectedCores = signal<number | string>('All');
+  availableCores = input<string[]>(['All']); // Get options from store
+  selectedCores = input<string>('All'); // Accept selected value from store
   coreFilterChange = output<CoreFilter>();
 
   coreOptions = computed(() => {
-    const cpus = this.allCpus();
-    const uniqueCores = [...new Set(cpus.map(cpu => cpu.cores))].sort((a,b) => a-b);
-    return[
-      { label: 'All', value: 'All' },
-      ...uniqueCores.map(cores => ({ label: `${cores} Cores`, value: cores }))
-    ]
-  })
+    const cores = this.availableCores();
+    return cores.map(core => ({
+      label: core === 'All' ? 'All' : `${core} Cores`,
+      value: core
+    }));
+  });
 
   onCoreChange(selectedCores: number | string) {
-    this.selectedCores.set(selectedCores);
     this.coreFilterChange.emit({ selectedCores });
   }
 
