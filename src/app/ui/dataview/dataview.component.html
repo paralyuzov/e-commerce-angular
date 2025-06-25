@@ -8,7 +8,7 @@
   >
     <ng-template #grid let-items>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        @for(item of items; track item.id) {
+        @for(item of items; track item._id) {
           @switch (item.type) {
             @case ('cpu') {
               <app-cpu-card [cpu]="item" />
